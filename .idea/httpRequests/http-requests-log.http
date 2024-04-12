@@ -1,0 +1,10 @@
+GET http://127.0.0.1:8000
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-04-08T013150.200.json
+
+###
+
