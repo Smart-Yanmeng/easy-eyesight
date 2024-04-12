@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal" created-in="PY-233.15026.15">
-    <data-source name="ease-eyesight@localhost" uuid="86f5457d-85de-40fc-870d-8b6f9d24c4ba">
+    <data-source name="@localhost" uuid="ea1e6ad8-0737-48ae-8b61-c3f4e162ece7">
       <database-info product="MySQL" version="8.0.34" jdbc-version="4.2" driver-name="Amazon Web Services (AWS) JDBC Driver for MySQL" driver-version="aws-mysql-connector-java-1.1.9 (Revision: 122bff765e786a47605d9586910f911cb87f3733)" dbms="MYSQL" exact-version="8.0.34" exact-driver-version="1.1">
         <extra-name-characters>#@</extra-name-characters>
         <identifier-quote-string>`</identifier-quote-string>
+        <jdbc-catalog-is-schema>true</jdbc-catalog-is-schema>
       </database-info>
       <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower" />
       <secret-storage>master_key</secret-storage>
       <user-name>root</user-name>
       <schema-mapping>
         <introspection-scope>
-          <node kind="schema" qname="@" />
+          <node kind="schema">
+            <name qname="@" />
+            <name qname="ease_eyesight" />
+            <name qname="ease-eyesight" />
+          </node>
         </introspection-scope>
       </schema-mapping>
     </data-source>
