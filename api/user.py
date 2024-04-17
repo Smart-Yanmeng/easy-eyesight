@@ -7,7 +7,7 @@ from service.user_service import UserService, load_face
 user_api = APIRouter()
 
 
-@user_api.get("/")
+@user_api.get("/user")
 async def getAllUser():
     users = await User.all()
 

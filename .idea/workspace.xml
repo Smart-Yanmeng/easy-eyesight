@@ -4,33 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf34410b-42aa-4ac8-9499-48fd2347760c" name="Changes" comment="2024/04/13">
-      <change afterPath="$PROJECT_DIR$/.ipynb_checkpoints/face_rec-checkpoint.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cheng_Long.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Yao_Ming.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Zhou_Jielun.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/face_db/1018F6D7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/face_db/B8F96FA8.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/face_db/EBB09E22.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/face_rec.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/face_rec_main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/models/1_20240413053910_update.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/models/2_20240413055825_update.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/user_service.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings/config.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/insight_face_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/86f5457d-85de-40fc-870d-8b6f9d24c4ba.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/86f5457d-85de-40fc-870d-8b6f9d24c4ba/storage_v2/_src_/schema/ease-eyesight.C7FGBw.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/86f5457d-85de-40fc-870d-8b6f9d24c4ba/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/86f5457d-85de-40fc-870d-8b6f9d24c4ba/storage_v2/_src_/schema/mysql.osA4Bg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/86f5457d-85de-40fc-870d-8b6f9d24c4ba/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/86f5457d-85de-40fc-870d-8b6f9d24c4ba/storage_v2/_src_/schema/sys.zb4BAA.meta" beforeDir="false" />
+    <list default="true" id="cf34410b-42aa-4ac8-9499-48fd2347760c" name="Changes" comment="2024/04/17">
+      <change afterPath="$PROJECT_DIR$/api/record.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/face_db/York.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/record_service.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/user.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pojo/dto_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/pojo/dto_models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/face_db/48DC6FA9.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pojo/po_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/pojo/po_models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/settings/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/user_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/service/user_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/insight_face_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/insight_face_utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,7 +178,7 @@
       <workItem from="1712798749082" duration="809000" />
       <workItem from="1712920914893" duration="22573000" />
       <workItem from="1712969279139" duration="16400000" />
-      <workItem from="1713275864799" duration="22246000" />
+      <workItem from="1713275864799" duration="25453000" />
     </task>
     <task id="LOCAL-00001" summary="2024/04/12">
       <option name="closed" value="true" />
@@ -229,7 +212,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712944410278</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="2024/04/17">
+      <option name="closed" value="true" />
+      <created>1713335563330</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1713335563330</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -250,11 +241,12 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="2024/04/12" />
     <MESSAGE value="2024/04/13" />
-    <option name="LAST_COMMIT_MESSAGE" value="2024/04/13" />
+    <MESSAGE value="2024/04/17" />
+    <option name="LAST_COMMIT_MESSAGE" value="2024/04/17" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/easy_eyesight$face_rec_main.coverage" NAME="face_rec_main Coverage Results" MODIFIED="1713310970057" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/easy_eyesight$main.coverage" NAME="main Coverage Results" MODIFIED="1713334924772" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/easy_eyesight$main.coverage" NAME="main Coverage Results" MODIFIED="1713337640818" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/easy_eyesight$easy_eyesight.coverage" NAME="easy-eyesight Coverage Results" MODIFIED="1712500274251" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>

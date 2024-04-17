@@ -126,7 +126,7 @@ class FaceRecognition:
         user_id = self.get_user_id(old_user_id)
 
         # 符合注册条件保存图片，同时把特征添加到人脸特征库中
-        # cv2.imencode('.png', image)[1].tofile(os.path.join(self.config.face_db, '%s.png' % user_id))
+        cv2.imencode('.png', image)[1].tofile(os.path.join(self.config.face_db, '%s.png' % user_id))
         # self.faces_embedding.append({
         #     "user_id": user_id,
         #     "feature": embedding

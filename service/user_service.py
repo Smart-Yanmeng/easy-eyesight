@@ -1,4 +1,5 @@
 import base64
+import os
 from io import BytesIO
 
 import cv2
@@ -86,14 +87,19 @@ class UserService:
         faces_in_db = await load_face()
 
         for db_face in faces_in_db:
-            face_feature = np.frombuffer(db_face.face_img, dtype=np.float32).reshape((1, -1))
+            db_face_feature = np.frombuffer(db_face.face_img, dtype=np.float32).reshape((1, -1))
 
-            if self.feature_compare(embedding, face_feature, self.config.threshold):
+            if self.feature_compare(embedding, db_face_feature, self.config.threshold):
                 print("人脸已存在")
 
                 return None
 
+        # 保存到本地
+        cv2.imencode('.png', image)[1].tofile(os.path.join(self.config.face_db, '%s.png' % data.username))
+
         # 添加到数据库
+        face_feature = embedding.tobytes()
+
         user = User(username=data.username, org_id=data.orgId, face_img=face_feature)
         await user.save()
 
