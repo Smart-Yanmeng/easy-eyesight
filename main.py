@@ -2,14 +2,18 @@ import uvicorn
 from fastapi import FastAPI
 
 from tortoise.contrib.fastapi import register_tortoise
+
 from settings.settings import TORTOISE_ORM
 
+from api.glasses import *
 from api.user import *
 
 app = FastAPI()
 
 app.include_router(user_api)
+app.include_router(glasses_api)
 
+# 注册 orm 数据库操作
 register_tortoise(
     app=app,
     config=TORTOISE_ORM

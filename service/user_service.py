@@ -1,45 +1,13 @@
-import base64
 import os
-from io import BytesIO
 
 import cv2
-import insightface
-from PIL import Image
 
 import numpy as np
 from sklearn import preprocessing
 
 from pojo.po_models import User
-from settings.settings import DeployConfig
-from utils import insight_face_utils
-
-
-def capture_image():
-    # 打开摄像头
-    cap = cv2.VideoCapture(0)
-
-    if not cap.isOpened():
-        print("无法打开摄像头。")
-        return None
-
-    # 捕获图像
-    ret, frame = cap.read()
-    if not ret:
-        print("无法捕获图像。")
-        return None
-
-    # 关闭摄像头
-    cap.release()
-
-    if frame is not None:
-        print("图像成功捕获")
-        print("图像类型: ", type(frame))
-        print("图像形状: ", frame.shape)
-    else:
-        print("未能捕获图像")
-
-        return None
-    return frame
+from service import model, config
+from utils.capture_utils import capture_image
 
 
 async def load_face():
@@ -50,11 +18,6 @@ async def load_face():
 
 class UserService:
     def __init__(self):
-        self.config = DeployConfig()
-        # 加载人脸识别模型
-        self.model = insightface.app.FaceAnalysis()
-        self.model.prepare(ctx_id=self.config.gpu_id)
-
         print("初始化 FaceService ...")
 
     @staticmethod
@@ -75,9 +38,11 @@ class UserService:
         image = capture_image()
 
         # 保证照片中只有一张人脸
-        faces = self.model.get(image)
-        if len(faces) != 1:
-            return None
+        faces = model.get(image)
+        # if len(faces) == 0:
+        #     raise NoFaceError()
+        # if len(faces) > 1:
+        #     raise MultiFaceError()
 
         # 提取人脸特征
         embedding = np.array(faces[0].embedding).reshape((1, -1))
@@ -89,13 +54,13 @@ class UserService:
         for db_face in faces_in_db:
             db_face_feature = np.frombuffer(db_face.face_img, dtype=np.float32).reshape((1, -1))
 
-            if self.feature_compare(embedding, db_face_feature, self.config.threshold):
+            if self.feature_compare(embedding, db_face_feature, config.threshold):
                 print("人脸已存在")
 
                 return None
 
         # 保存到本地
-        cv2.imencode('.png', image)[1].tofile(os.path.join(self.config.face_db, '%s.png' % data.username))
+        cv2.imencode('.png', image)[1].tofile(os.path.join(config.face_db, '%s.png' % data.username))
 
         # 添加到数据库
         face_feature = embedding.tobytes()
@@ -112,7 +77,7 @@ class UserService:
     async def recognituon_face(self):
         image = capture_image()
 
-        faces = self.model.get(image)
+        faces = model.get(image)
         results = list()
 
         faces_in_db = await load_face()
@@ -139,7 +104,7 @@ class UserService:
             for db_face in faces_in_db:
                 face_feature = np.frombuffer(db_face.face_img, dtype=np.float32).reshape((1, -1))
 
-                if self.feature_compare(embedding, face_feature, self.config.threshold):
+                if self.feature_compare(embedding, face_feature, config.threshold):
                     print("已找到")
                     result["username"] = db_face.username
 
