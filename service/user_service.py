@@ -5,12 +5,17 @@ import cv2
 import numpy as np
 from sklearn import preprocessing
 
+from costom_error import *
 from pojo.po_models import User
 from service import model, config
 from utils.capture_utils import capture_image
 
 
 async def load_face():
+    """
+    :introduction 加载所有数据
+    """
+
     faces = await User.all()
 
     return faces
@@ -29,20 +34,20 @@ class UserService:
         else:
             return False
 
-    """
-    :param image
-    :introduction 添加脸到数据库
-    """
-
     async def add_face(self, data):
+        """
+        :param image
+        :introduction 添加脸到数据库
+        """
+
         image = capture_image()
 
         # 保证照片中只有一张人脸
         faces = model.get(image)
-        # if len(faces) == 0:
-        #     raise NoFaceError()
-        # if len(faces) > 1:
-        #     raise MultiFaceError()
+        if len(faces) == 0:
+            raise NoFaceError()
+        if len(faces) > 1:
+            raise MultiFaceError()
 
         # 提取人脸特征
         embedding = np.array(faces[0].embedding).reshape((1, -1))
@@ -70,11 +75,11 @@ class UserService:
 
         return True
 
-    """
-    :introduction 人脸识别
-    """
-
     async def recognituon_face(self):
+        """
+        :introduction 人脸识别
+        """
+
         image = capture_image()
 
         faces = model.get(image)
@@ -112,6 +117,10 @@ class UserService:
         return results
 
     async def delete_face(self, user_id):
+        """
+        :introduction 人脸识别
+        """
+
         await User.filter(user_id=user_id).delete()
 
     # async def query_face(self):

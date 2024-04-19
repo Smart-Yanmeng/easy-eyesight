@@ -3,6 +3,7 @@ import numpy as np
 import dlib
 from PIL import Image
 
+from costom_error import *
 from utils.capture_utils import capture_image
 
 detector = dlib.get_frontal_face_detector()
@@ -21,13 +22,17 @@ def has_glasses():
         if len(faces) != 1:
             print("识别到多个人脸")
 
-            raise Exception("多个人脸")
+            raise MultiFaceError()
+        if len(faces) == 0:
+            print("未识别到人脸")
+
+            raise NoFaceError()
         rect = faces[0]
         sp = predictor(img, rect)
         landmarks = np.array([[p.x, p.y] for p in sp.parts()])
         print(landmarks)
     except:
-        print("未识别到人脸")
+        print("出现不明错误，请联系管理员")
 
         return -1
 

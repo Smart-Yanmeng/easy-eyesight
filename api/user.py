@@ -7,7 +7,7 @@ from service.user_service import UserService, load_face
 user_api = APIRouter()
 
 
-@user_api.get("/user")
+@user_api.get("")
 async def getAllUser():
     users = await User.all()
 
@@ -17,7 +17,7 @@ async def getAllUser():
     return None
 
 
-@user_api.post("/user/face")
+@user_api.post("/face")
 async def insert_user(request: FaceImgDto):
     if await UserService().add_face(request):
         return {"code": 0, "message": "success"}
@@ -25,7 +25,7 @@ async def insert_user(request: FaceImgDto):
     raise HTTPException(status_code=400, detail="未识别到人脸")
 
 
-@user_api.delete("/user/face")
+@user_api.delete("/face")
 async def delete_user(request: int):
     if await UserService().delete_face(request):
         return {"code": 0, "message": "success"}
@@ -33,7 +33,7 @@ async def delete_user(request: int):
     raise HTTPException(status_code=400, detail="系统出错")
 
 
-@user_api.get("/user/face")
+@user_api.get("/face")
 async def query_user():
     data = await load_face()
 
@@ -45,7 +45,7 @@ async def query_user():
     return {"code": 0, "message": "success"}
 
 
-@user_api.post("/user/face/recognize")
+@user_api.post("/face/recognize")
 async def recognize_face():
     data = await UserService().recognituon_face()
     if data:

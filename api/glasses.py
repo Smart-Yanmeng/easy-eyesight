@@ -1,11 +1,12 @@
 from fastapi import APIRouter, HTTPException
 
+from costom_error import NoFaceError
 from utils.glasses_detector_utils import has_glasses
 
 glasses_api = APIRouter()
 
 
-@glasses_api.get("/glasses")
+@glasses_api.get("")
 async def judge_wear_glasses():
     try:
         if has_glasses():
@@ -13,6 +14,6 @@ async def judge_wear_glasses():
         else:
             return {"code": 200, "message": "success", "data": False}
     except:
-        print("未识别到人脸！")
+        error = NoFaceError()
 
-        raise HTTPException(status_code=400, detail="未识别到人脸")
+        raise HTTPException(status_code=400, detail=error.message)

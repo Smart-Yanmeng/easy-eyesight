@@ -10,8 +10,8 @@ from api.user import *
 
 app = FastAPI()
 
-app.include_router(user_api)
-app.include_router(glasses_api)
+app.include_router(user_api, prefix="/user")
+app.include_router(glasses_api, prefix="/glasses")
 
 # 注册 orm 数据库操作
 register_tortoise(
