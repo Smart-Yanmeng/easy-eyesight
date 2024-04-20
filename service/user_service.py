@@ -36,7 +36,6 @@ class UserService:
 
     async def add_face(self, data):
         """
-        :param image
         :introduction 添加脸到数据库
         """
 

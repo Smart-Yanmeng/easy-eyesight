@@ -21,6 +21,8 @@ class Org(Model):
 class Record(Model):
     record_id = fields.BigIntField(pk=True, description="记录ID")
     user = fields.ForeignKeyField("models.User", related_name="users")
-    wear_glasses = fields.FloatField(description="戴眼镜视力")
-    naked_eye = fields.FloatField(description="裸眼视力")
+    left_with_glasses = fields.FloatField(description="左眼矫正视力")
+    right_with_glasses = fields.FloatField(description="右眼矫正视力")
+    left_naked_eye = fields.FloatField(description="左裸眼视力")
+    right_naked_eye = fields.FloatField(description="右裸眼视力")
     create_time = fields.DatetimeField(default=datetime.utcnow(), description="创建时间")

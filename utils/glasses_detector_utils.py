@@ -19,22 +19,17 @@ def has_glasses():
 
     try:
         faces = detector(img)
-        if len(faces) != 1:
+        if len(faces) > 1:
             print("识别到多个人脸")
 
             raise MultiFaceError()
-        if len(faces) == 0:
-            print("未识别到人脸")
 
-            raise NoFaceError()
         rect = faces[0]
         sp = predictor(img, rect)
         landmarks = np.array([[p.x, p.y] for p in sp.parts()])
         print(landmarks)
     except:
-        print("出现不明错误，请联系管理员")
-
-        return -1
+        raise NoFaceError()
 
     nose_bridge_x = []
     nose_bridge_y = []
