@@ -11,10 +11,12 @@ user_api = APIRouter()
 async def getAllUser():
     users = await User.all()
 
+    userDict = {}
     for user in users:
+        userDict[user.user_id] = user.username
         print(user.user_id, user.username)
 
-    return None
+    return userDict
 
 
 @user_api.post("/face")

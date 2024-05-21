@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        .title{
+            font-size: 30px;
+            text-align: center;
+			position: absolute;
+			top: 0;
+		    width: 100%;
+        }
+        .bottom{
+            font-size: 30px;
+            text-align: center;
+			position: absolute;
+			bottom: 0;
+		    width: 100%;
+        }
+        .e{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+
+    </style>
+	<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+	</script>
+</head>
+<body>
+        <p id="title" class="title">当前测试者：<a id="user">user</a></p>
+		
+        <div id="esize" class="e"><img id="epic" src="img/right-0.png"></div>
+
+        <p id="message" class="bottom">请根据上方图片做出对应手势直到出现下一张图片</p>
+</body>
+
+
+<script>
+
+var last_sound = "";
+
+var player = new Audio();
+
+function test(){
+  $.getJSON("http://127.0.0.1:9999/get_stats", function(json){
+	console.log(json);
+	console.log(json.user.length);
+	if(json.user.length == 0){
+		json.user = "正在等待";
+	}
+	$('#user').text(json.user);
+	$('#message').text(json.msg);
+	if(json.edata.position != undefined){
+		$('#epic').attr('src',"img/"+json.edata.position+"-"+json.edata.size+".png")
+	}
+    
+	
+    if(json.sound != last_sound){
+        var mp3Url = "http://127.0.0.1:9999/static/"+json.sound+".mp3";
+        console.log(mp3Url);
+        console.log(json.sound);
+        console.log(last_sound)
+        if(player.paused){
+            player = new Audio(mp3Url);
+            player.play();
+        }
+        last_sound = json.sound;
+    }
+    
+
+
+	//alert("JSON Data: " + json);
+});
+
+}
+
+setInterval(function(){
+	test();
+},300);
+</script>
+</html>
