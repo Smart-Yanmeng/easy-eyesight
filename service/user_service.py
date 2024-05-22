@@ -8,12 +8,12 @@ from sklearn import preprocessing
 from costom_error import *
 from pojo.po_models import User
 from service import model, config
-from utils.capture_utils import capture_image
+from utils.capture_utils import get_frame
 
 
 async def load_face():
     """
-    :introduction 加载所有数据
+    :introduction 加载所有人脸数据
     """
 
     faces = await User.all()
@@ -36,10 +36,10 @@ class UserService:
 
     async def add_face(self, data):
         """
-        :introduction 添加脸到数据库
+        :introduction 添加人脸到数据库
         """
 
-        image = capture_image()
+        image = get_frame()
 
         # 保证照片中只有一张人脸
         faces = model.get(image)
@@ -74,12 +74,12 @@ class UserService:
 
         return True
 
-    async def recognituon_face(self):
+    async def recognition_face(self):
         """
         :introduction 人脸识别
         """
 
-        image = capture_image()
+        image = get_frame()
 
         faces = model.get(image)
         results = list()
@@ -93,11 +93,11 @@ class UserService:
             result["bbox"] = np.array(face.bbox).astype(np.int32).tolist()
             if face.landmark is not None:
                 result["landmark"] = np.array(face.landmark).astype(np.int32).tolist()
-            result["age"] = face.age
-            gender = '男'
-            if face.gender == 0:
-                gender = '女'
-            result["gender"] = gender
+            # result["age"] = face.age
+            # gender = '男'
+            # if face.gender == 0:
+            #     gender = '女'
+            # result["gender"] = gender
 
             # 开始人脸识别
             embedding = np.array(face.embedding).reshape((1, -1))
@@ -111,13 +111,17 @@ class UserService:
                 if self.feature_compare(embedding, face_feature, config.threshold):
                     print("已找到")
                     result["username"] = db_face.username
+                else:
+                    print("不匹配的人脸")
+
+                    raise MatchFaceError()
 
             results.append(result)
         return results
 
     async def delete_face(self, user_id):
         """
-        :introduction 人脸识别
+        :introduction 删除人脸
         """
 
         await User.filter(user_id=user_id).delete()

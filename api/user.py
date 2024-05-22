@@ -49,7 +49,7 @@ async def query_user():
 
 @user_api.post("/face/recognize")
 async def recognize_face():
-    data = await UserService().recognituon_face()
+    data = await UserService().recognition_face()
     if data:
         return {"code": 0, "message": "success", "data": data}
 

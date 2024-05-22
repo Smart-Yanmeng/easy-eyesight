@@ -8,18 +8,36 @@ import random
 
 from face_service import *
 
+
+def get_frame():
+    ret, frame = cap.read()
+    frame = cv2.cvtColor(cv2.flip(frame, 1), cv2.COLOR_BGR2RGB)
+    # frame = cv2.cvtColor(frame,cv2.COLOR_BGR2RGB)
+    return frame
+
+
+# mediapipe 工具
 mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
-
 mp_face_detection = mp.solutions.face_detection
 face_detection = mp_face_detection.FaceDetection(min_detection_confidence=0.2)
+hands = mp_hands.Hands(
+    max_num_hands=2,
+    min_detection_confidence=0.5,
+    min_tracking_confidence=0.5
+)
 
 cap = cv2.VideoCapture(0 + cv2.CAP_DSHOW)
 # hands:[{"hand":"left","direction":"up"},{"hand":"right","direction":"up"}]
 
 user, state, msg, data, edata = "", "", "", [], {}
 
-table = {0: "up", 1: "down", 2: "left", 3: "right"}
+table = {
+    0: "up",
+    1: "down",
+    2: "left",
+    3: "right"
+}
 
 # condtion = [1,1,1,2,2,3,3,3,4,4,4]
 
@@ -41,21 +59,8 @@ is_glasses = False
 
 face_service = Face_service()
 
+
 # sound = "";
-
-# 设置手部检测参数
-hands = mp_hands.Hands(
-    max_num_hands=2,
-    min_detection_confidence=0.5,
-    min_tracking_confidence=0.5
-)
-
-
-def get_frame():
-    ret, frame = cap.read()
-    frame = cv2.cvtColor(cv2.flip(frame, 1), cv2.COLOR_BGR2RGB)
-    # frame = cv2.cvtColor(frame,cv2.COLOR_BGR2RGB)
-    return frame
 
 
 def get_face_area(frame):
@@ -68,6 +73,7 @@ def get_face_area(frame):
             bboxC = detection.location_data.relative_bounding_box
             ih, iw, _ = frame.shape
             x, y, w, h = int(bboxC.xmin * iw), int(bboxC.ymin * ih), int(bboxC.width * iw), int(bboxC.height * ih)
+
             # 识别出的人脸区域图像
             cropped_face = frame[y:y + h, x:x + w]
 
@@ -153,7 +159,7 @@ def get_direction(frame):
 
 def start():
     global state, msg, data, edata, user, last_user
-        # , sound
+    # , sound
     # 循环读取摄像头数据并写入全局变量
 
     no_face = True
@@ -235,7 +241,7 @@ def start():
 
 # 两眼一轮，不管裸眼还是矫正
 def test_round():
-    global state, msg, data, edata, last_user, test_result\
+    global state, msg, data, edata, last_user, test_result \
         # , sound
     # 手势识别阶段
     # 先测右眼
@@ -360,7 +366,7 @@ def test_one(level, eye):
 
 
 def get_state():
-    global user, state, msg, data, edata\
+    global user, state, msg, data, edata \
         # , sound
 
     result = {

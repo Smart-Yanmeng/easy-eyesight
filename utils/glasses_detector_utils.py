@@ -4,7 +4,7 @@ import dlib
 from PIL import Image
 
 from costom_error import *
-from utils.capture_utils import capture_image
+from utils.capture_utils import get_frame
 
 detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor('shape_predictor_68_face_landmarks.dat')
@@ -12,7 +12,7 @@ predictor = dlib.shape_predictor('shape_predictor_68_face_landmarks.dat')
 
 def has_glasses():
     # try:
-    img = capture_image()
+    img = get_frame()
 
     # img = dlib.load_rgb_image(path)
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)

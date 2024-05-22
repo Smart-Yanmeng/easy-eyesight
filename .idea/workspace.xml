@@ -4,19 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf34410b-42aa-4ac8-9499-48fd2347760c" name="Changes" comment="2024/05/21">
-      <change afterPath="$PROJECT_DIR$/utils/shape_predictor_68_face_landmarks.dat" afterDir="false" />
+    <list default="true" id="cf34410b-42aa-4ac8-9499-48fd2347760c" name="Changes" comment="2024/05/22">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/costom_error.py" beforeDir="false" afterPath="$PROJECT_DIR$/costom_error.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/face_rec.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/face_rec.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/record_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/service/record_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/user_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/service/user_service.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/capture_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/capture_utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/glasses_detector_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/glasses_detector_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/代码打包/code/glasses - 副本.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/代码打包/code/glasses.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/代码打包/code/hand2 - 副本.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/代码打包/code/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/代码打包/code/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/代码打包/code/state.py" beforeDir="false" afterPath="$PROJECT_DIR$/代码打包/code/state.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/代码打包/code/temp.png" beforeDir="false" afterPath="$PROJECT_DIR$/代码打包/code/temp.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/代码打包/code/test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/代码打包/code/test_service.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,35 +73,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "FastAPI.easy-eyesight.executor": "Run",
-    "HTTP Request.test_main | #1.executor": "Run",
-    "Python.api.executor": "Run",
-    "Python.face_rec_main.executor": "Run",
-    "Python.glasses_detector_utils.executor": "Run",
-    "Python.glasses_service.executor": "Run",
-    "Python.main.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/yorky/Desktop/Project/easy-eyesight/utils",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;FastAPI.easy-eyesight.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.test_main | #1.executor&quot;: &quot;Run&quot;,
+    &quot;Python.api.executor&quot;: &quot;Run&quot;,
+    &quot;Python.face_rec_main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.glasses_detector_utils.executor&quot;: &quot;Run&quot;,
+    &quot;Python.glasses_service.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/yorky/Desktop/Project/easy-eyesight/utils&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql_aurora_aws"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql_aurora_aws&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\yorky\Desktop\Project\easy-eyesight\utils" />
@@ -117,7 +114,7 @@
       <recent name="C:\Users\yorky\Desktop\Project\easy-eyesight\settings" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.glasses_detector_utils">
+  <component name="RunManager" selected="Python.main">
     <configuration name="api" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="easy-eyesight" />
       <option name="ENV_FILES" value="" />
@@ -250,9 +247,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.main" />
         <item itemvalue="Python.glasses_detector_utils" />
         <item itemvalue="Python.api" />
-        <item itemvalue="Python.main" />
         <item itemvalue="Python.glasses_service" />
         <item itemvalue="Python.face_rec_main" />
       </list>
@@ -295,7 +292,8 @@
       <workItem from="1716268281580" duration="2817000" />
       <workItem from="1716284727380" duration="3941000" />
       <workItem from="1716298532002" duration="10223000" />
-      <workItem from="1716381413211" duration="3866000" />
+      <workItem from="1716381413211" duration="4991000" />
+      <workItem from="1716392733745" duration="6406000" />
     </task>
     <task id="LOCAL-00001" summary="2024/04/12">
       <option name="closed" value="true" />
@@ -345,7 +343,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716298558812</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="2024/05/22">
+      <option name="closed" value="true" />
+      <created>1716391734921</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1716391734921</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -368,7 +374,8 @@
     <MESSAGE value="2024/04/13" />
     <MESSAGE value="2024/04/17" />
     <MESSAGE value="2024/05/21" />
-    <option name="LAST_COMMIT_MESSAGE" value="2024/05/21" />
+    <MESSAGE value="2024/05/22" />
+    <option name="LAST_COMMIT_MESSAGE" value="2024/05/22" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -387,7 +394,7 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/easy_eyesight$main.coverage" NAME="main Coverage Results" MODIFIED="1716269002952" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/easy_eyesight$main.coverage" NAME="main Coverage Results" MODIFIED="1716415066942" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/easy_eyesight$face_rec_main.coverage" NAME="face_rec_main Coverage Results" MODIFIED="1713440415274" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/easy_eyesight$api.coverage" NAME="api Coverage Results" MODIFIED="1716382089201" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/代码打包/code" />
     <SUITE FILE_PATH="coverage/easy_eyesight$easy_eyesight.coverage" NAME="easy-eyesight Coverage Results" MODIFIED="1712500274251" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
