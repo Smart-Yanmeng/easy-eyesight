@@ -38,18 +38,12 @@ def has_glasses():
         nose_bridge_x.append(landmarks[i][0])
         nose_bridge_y.append(landmarks[i][1])
 
-    # x_min and x_max
     x_min = min(nose_bridge_x)
     x_max = max(nose_bridge_x)
-
-    # ymin (from top eyebrow coordinate),  ymax
     y_min = landmarks[20][1]
     y_max = landmarks[31][1]
 
-    # img2 = Image.open(path)
-    img2 = Image.fromarray(img)
-
-    img2 = img2.crop((x_min, y_min, x_max * 0.99, y_max * 0.95))
+    img2 = Image.fromarray(img).crop((x_min, y_min, x_max * 0.99, y_max * 0.95))
 
     # 高斯滤波
     img_blur = cv2.GaussianBlur(np.array(img2), (3, 3), sigmaX=0, sigmaY=0)

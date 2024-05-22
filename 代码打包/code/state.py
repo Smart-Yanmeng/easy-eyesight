@@ -41,7 +41,7 @@ is_glasses = False
 
 face_service = Face_service()
 
-sound = "";
+# sound = "";
 
 # 设置手部检测参数
 hands = mp_hands.Hands(
@@ -59,7 +59,7 @@ def get_frame():
 
 
 def get_face_area(frame):
-    global sound
+    # global sound
     cv2.imwrite("temp.png", frame)
     face_result = face_detection.process(frame)
 
@@ -74,14 +74,14 @@ def get_face_area(frame):
             # 模拟人脸识别任务
             user = face_service.search_face_line(cropped_face)
             if (user == False):
-                sound = "rescan"
+                # sound = "rescan"
                 return "正在重新扫描人脸，请面向摄像头"
 
             if (user == []):
-                sound = "nouser"
+                # sound = "nouser"
                 return "当前用户不存在或未注册！"
 
-            user = user[1]
+            # user = user[1]
 
             # user = "测试用户1"
             # print("识别成功："+user)
@@ -90,7 +90,7 @@ def get_face_area(frame):
             try:
                 flag_glasses = glasses.has_glasses("temp.png")
                 if (flag_glasses == -1):
-                    sound = "rescan"
+                    # sound = "rescan"
                     return "正在重新扫描人脸，请面向摄像头"
                 # flag = "has_glasses " if glasses.has_glasses(cropped_face) else "not "
                 # cv2.putText(frame, flag+str(detection.score[0]), (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2, cv2.LINE_AA)
@@ -152,7 +152,8 @@ def get_direction(frame):
 
 
 def start():
-    global state, msg, data, edata, user, last_user, sound
+    global state, msg, data, edata, user, last_user
+        # , sound
     # 循环读取摄像头数据并写入全局变量
 
     no_face = True
@@ -165,7 +166,7 @@ def start():
 
         state = "待检测状态，正在等待测试者人脸"
         msg = "正在等待,请正视摄像头"
-        sound = "wait_face"
+        # sound = "wait_face"
 
         # has_glasses = False
 
@@ -191,21 +192,21 @@ def start():
                     if (has_glasses == True):
                         is_glasses = True
                         msg = "请先摘下眼镜进行裸眼视力测试！"
-                        sound = "takeoff"
+                        # sound = "takeoff"
                         time.sleep(3)
                         continue
                 else:
                     # 戴眼镜二次矫正测试
                     if (has_glasses == False):
                         msg = "若有佩戴眼镜，请戴上眼镜进行矫正视力测试！否则请离开！"
-                        sound = "over"
+                        # sound = "over"
                         time.sleep(3)
                         continue
 
                     if (len(test_result) == 4):
                         # 已经测过两次了，提示离开
                         msg = "您的视力测试已完成，请离开"
-                        sound = "over"
+                        # sound = "over"
                         time.sleep(5)
                         continue
 
@@ -222,11 +223,11 @@ def start():
             no_face = True
             if (has_glasses):
                 msg = "测试结束，" + last_user + ",你的数据：" + todata(test_result) + "，您的视力测试已完成，请离开"
-                sound = "over"
+                # sound = "over"
             else:
                 msg = "测试结束，" + last_user + ",你的数据：" + todata(
                     test_result) + "，若有佩戴眼镜，请戴上眼镜后继续进行矫正视力测试。否则请离开测试区域"
-                sound = "over_part"
+                # sound = "over_part"
             # print(no_face, has_glasses)
 
             time.sleep(10)
@@ -234,7 +235,8 @@ def start():
 
 # 两眼一轮，不管裸眼还是矫正
 def test_round():
-    global state, msg, data, edata, last_user, test_result, sound
+    global state, msg, data, edata, last_user, test_result\
+        # , sound
     # 手势识别阶段
     # 先测右眼
     eye = "right"
@@ -247,7 +249,7 @@ def test_round():
         now, hand = ("左", "右") if (eye == "right") else ("右", "左")
         # 检测到人脸之后给用户三秒钟时间调整姿态
         msg = "请" + now + "手握住挡眼板挡遮住" + now + "眼进行下一步测试"
-        sound = eye
+        # sound = eye
 
         time.sleep(1)
         over = False
@@ -358,7 +360,8 @@ def test_one(level, eye):
 
 
 def get_state():
-    global user, state, msg, data, edata, sound
+    global user, state, msg, data, edata\
+        # , sound
 
     result = {
         'user': user,
@@ -366,7 +369,7 @@ def get_state():
         'msg': msg,
         'data': data,
         'edata': edata,
-        'sound': sound
+        # 'sound': sound
     }
 
     return result
