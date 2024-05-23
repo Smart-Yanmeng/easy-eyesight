@@ -17,8 +17,17 @@ async def load_face():
     """
 
     faces = await User.all()
+    results = list()
+    result = dict()
 
-    return faces
+    for face in faces:
+        result["user_id"] = face.user_id
+        result["username"] = face.username
+        result["face_image"] = face.face_img
+
+        results.append(result)
+
+    return results
 
 
 class UserService:
@@ -29,6 +38,7 @@ class UserService:
     def feature_compare(feature1, feature2, threshold):
         diff = np.subtract(feature1, feature2)
         dist = np.sum(np.square(diff), 1)
+        print(dist)
         if dist < threshold:
             return True
         else:
@@ -80,6 +90,9 @@ class UserService:
         """
 
         image = get_frame()
+        # plt.imshow(image)
+        # plt.axis('off')  # 隐藏坐标轴
+        # plt.show()
 
         faces = model.get(image)
         results = list()
@@ -114,7 +127,7 @@ class UserService:
                 else:
                     print("不匹配的人脸")
 
-                    raise MatchFaceError()
+                    # raise MatchFaceError()
 
             results.append(result)
         return results

@@ -1,6 +1,7 @@
 from fastapi import APIRouter
 
 from pojo.po_models import Record
+from pojo.vo_result import R
 from service.record_service import *
 
 record_api = APIRouter()
@@ -19,7 +20,7 @@ async def getAllRecord():
 @record_api.post("/naked-eye")
 async def doRecordWithNaked():
     if do_record_with_naked():
-        return {"code": 200, "message": "success"}
+        return R.ok()
 
     return None
 
@@ -27,6 +28,6 @@ async def doRecordWithNaked():
 @record_api.post("/wear-glasses")
 async def doRecordWithGlasses():
     if do_record_with_glasses():
-        return {"code": 200, "message": "success"}
+        return R.ok()
 
     return None

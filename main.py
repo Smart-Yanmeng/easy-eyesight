@@ -3,6 +3,7 @@ from fastapi import FastAPI
 
 from tortoise.contrib.fastapi import register_tortoise
 
+from api.process import process_api
 from settings.settings import TORTOISE_ORM
 
 from api.glasses import *
@@ -12,6 +13,7 @@ app = FastAPI()
 
 app.include_router(user_api, prefix="/user")
 app.include_router(glasses_api, prefix="/glasses")
+app.include_router(process_api, prefix="/process")
 
 # 注册 orm 数据库操作
 register_tortoise(
