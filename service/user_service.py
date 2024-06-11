@@ -7,8 +7,11 @@ from sklearn import preprocessing
 
 from costom_error import *
 from pojo.po_models import User
-from service import model, config
+from service import config
+from settings.face_model import FaceModel
 from utils.capture_utils import get_frame
+
+model = FaceModel.get_model()
 
 
 async def load_face():
@@ -66,7 +69,7 @@ class UserService:
         faces_in_db = await load_face()
 
         for db_face in faces_in_db:
-            db_face_feature = np.frombuffer(db_face.face_img, dtype=np.float32).reshape((1, -1))
+            db_face_feature = np.frombuffer(db_face["face_img"], dtype=np.float32).reshape((1, -1))
 
             if self.feature_compare(embedding, db_face_feature, config.threshold):
                 print("人脸已存在")
@@ -87,6 +90,7 @@ class UserService:
     async def recognition_face(self):
         """
         :introduction 人脸识别
+        :returns
         """
 
         image = get_frame()
@@ -95,7 +99,6 @@ class UserService:
         # plt.show()
 
         faces = model.get(image)
-        results = list()
 
         faces_in_db = await load_face()
 
@@ -106,31 +109,26 @@ class UserService:
             result["bbox"] = np.array(face.bbox).astype(np.int32).tolist()
             if face.landmark is not None:
                 result["landmark"] = np.array(face.landmark).astype(np.int32).tolist()
-            # result["age"] = face.age
-            # gender = '男'
-            # if face.gender == 0:
-            #     gender = '女'
-            # result["gender"] = gender
 
             # 开始人脸识别
             embedding = np.array(face.embedding).reshape((1, -1))
             embedding = preprocessing.normalize(embedding)
 
+            result["user_id"] = 0
             result["username"] = "unknown"
 
             for db_face in faces_in_db:
-                face_feature = np.frombuffer(db_face.face_img, dtype=np.float32).reshape((1, -1))
+                print(db_face)
+                face_feature = np.frombuffer(db_face["face_image"], dtype=np.float32).reshape((1, -1))
 
                 if self.feature_compare(embedding, face_feature, config.threshold):
                     print("已找到")
-                    result["username"] = db_face.username
+                    result["user_id"] = db_face["user_id"]
+                    result["username"] = db_face["username"]
                 else:
-                    print("不匹配的人脸")
+                    print("不匹配的人脸，请先注册！")
 
-                    # raise MatchFaceError()
-
-            results.append(result)
-        return results
+        return result
 
     async def delete_face(self, user_id):
         """

@@ -10,6 +10,6 @@ async def do_process():
     """
     :introduce 整体流程
     """
-    do_test_visual_acuity()
+    record = await do_test_visual_acuity()
 
-    return None
+    return record
